@@ -6,15 +6,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="30dp"
-            android:textColor="@color/black"
-            android:text="Daftar Dokter"
-            android:id="@+id/layout">
-        </TextView>
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:textColor="@color/black"
+        android:text="Daftar Pertemuan"
+        android:id="@+id/layout">
+    </TextView>
 
     <ListView
         android:id="@+id/idLVLanguages"
@@ -32,5 +31,5 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true">
     </Button>
-    
+
 </RelativeLayout>
