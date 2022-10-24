@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentResultListener;
 import androidx.fragment.app.FragmentTransaction;
 
 
+import android.Manifest;
 import android.os.Bundle;
 
 import com.example.tubes1.contract.MainUI;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements MainUI{
     private HomeFragment hf;
     private FormPertemuanFragment fpf;
     private MainPresenter mp;
+    public static final int WRITE_REQUEST_CODE =1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,8 @@ public class MainActivity extends AppCompatActivity implements MainUI{
         fpf= new FormPertemuanFragment();
         mp = new MainPresenter(this);
         hf.setMp(mp);
+        String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        this.requestPermissions(permissions,WRITE_REQUEST_CODE);
         this.getSupportFragmentManager().setFragmentResultListener(
                 "changePage", this,new FragmentResultListener(){
                     @Override
