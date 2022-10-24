@@ -27,7 +27,7 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/hapus_btn"
+        android:id="@+id/hapus_button"
         android:src="@android:drawable/ic_menu_delete">
 
     </ImageButton>
