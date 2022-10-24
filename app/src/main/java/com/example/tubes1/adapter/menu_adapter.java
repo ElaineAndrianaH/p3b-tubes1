@@ -66,9 +66,10 @@ public class menu_adapter extends BaseAdapter {
         vh.updateView(getItem(i).toString());
         return view;
     }
-    private class viewHolder{
+    private class viewHolder implements View.OnClickListener{
         private LeftPresenter presenter;
         private ItemMenuBinding item;
+
 
 
         public viewHolder(LeftPresenter presenter, ItemMenuBinding item) {
@@ -77,6 +78,12 @@ public class menu_adapter extends BaseAdapter {
         }
         public void updateView(String str){
             this.item.itemLeft.setText(str);
+            this.item.itemLeft.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            this.presenter.changeListener(this.item.itemLeft.getText().toString());
         }
     }
 }

@@ -16,6 +16,9 @@ public class LeftPresenter {
         String[] arr={"Home","Pertemuan","Dokter","Exit"};
         this.loadData(arr);
     }
+    public void changeListener(String page){
+        this.ui.listenerOnClick(page);
+    }
     public void loadData(String[] str){ //buat ngubah array jd list
         this.list.addAll(Arrays.asList(str));
         this.ui.updateList(list);

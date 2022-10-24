@@ -10,4 +10,7 @@ public class MainPresenter {
         //inisialisasi page pertama yang kebuka di home
         this.mainUI.changePage("Home");
     }
+    public void goToPertemuanForm (){
+        this.mainUI.changePage("Pertemuan Form");
+    }
 }

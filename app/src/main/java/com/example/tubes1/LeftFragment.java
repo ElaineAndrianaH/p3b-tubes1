@@ -14,7 +14,7 @@ import com.example.tubes1.presenter.LeftPresenter;
 
 import java.util.List;
 
-public class LeftFragment extends Fragment implements LeftUI {
+public class LeftFragment extends Fragment implements LeftUI{
     private menu_adapter adapter;
     private LeftFragmentBinding fragmentLeftBinding;
     private LeftPresenter presenter;
@@ -35,5 +35,16 @@ public class LeftFragment extends Fragment implements LeftUI {
     @Override
     public void updateList(List<String> list) {
         adapter.update(list);
+    }
+
+    @Override
+    public void listenerOnClick(String page) {
+        switch (page){
+            case "Exit": this.getParentFragmentManager().setFragmentResult("closeApp",new Bundle());
+            break;
+            default:
+                Bundle res = new Bundle();
+                res.putString("page",page);
+        this.getParentFragmentManager().setFragmentResult("changePage",res);}
     }
 }
