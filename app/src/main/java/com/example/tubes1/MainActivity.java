@@ -12,6 +12,7 @@ import android.os.Bundle;
 
 import com.example.tubes1.contract.MainUI;
 import com.example.tubes1.databinding.ActivityMainBinding;
+import com.example.tubes1.databinding.DaftarPertemuanBinding;
 import com.example.tubes1.presenter.MainPresenter;
 
 import java.util.Calendar;
@@ -21,6 +22,8 @@ public class MainActivity extends AppCompatActivity implements MainUI{
     private HomeFragment hf;
     private FormPertemuanFragment fpf;
     private MainPresenter mp;
+    private DokterFragment df;
+    private PertemuanFragment pf;
     public static final int WRITE_REQUEST_CODE =1;
 
     @Override
@@ -28,9 +31,10 @@ public class MainActivity extends AppCompatActivity implements MainUI{
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        df=new DokterFragment();
         hf= new HomeFragment();
         fpf= new FormPertemuanFragment();
+        pf= new PertemuanFragment();
         mp = new MainPresenter(this);
         hf.setMp(mp);
         String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
@@ -73,6 +77,20 @@ public class MainActivity extends AppCompatActivity implements MainUI{
                     ft.add(binding.fragmentContainer.getId(),this.fpf).addToBackStack(null);
                 }
                 break;
+            case "Dokter":
+                if(this.df.isAdded()){
+                    ft.show(this.df);
+                }else{
+                    ft.add(binding.fragmentContainer.getId(),this.df).addToBackStack(null);
+                }
+                break;
+            case "Pertemuan":
+                if(this.pf.isAdded()){
+                    ft.show(this.pf);
+                }else{
+                    ft.add(binding.fragmentContainer.getId(),this.pf).addToBackStack(null);
+                }
+                break;
             default:
                 if(this.hf.isAdded()){
                     ft.show(this.hf);
@@ -80,6 +98,7 @@ public class MainActivity extends AppCompatActivity implements MainUI{
                     ft.add(binding.fragmentContainer.getId(),this.hf);
                 }
         }
+
         ft.commit();
     }
 
@@ -90,6 +109,12 @@ public class MainActivity extends AppCompatActivity implements MainUI{
         }
         if(this.fpf.isAdded()){
             ft.hide(this.fpf);
+        }
+        if(this.df.isAdded()){
+            ft.hide(this.df);
+        }
+        if(this.pf.isAdded()){
+            ft.hide(this.pf);
         }
     }
 

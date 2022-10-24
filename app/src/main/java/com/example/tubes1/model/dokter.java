@@ -1,5 +1,12 @@
 package com.example.tubes1.model;
 
+import android.os.Environment;
+import android.widget.Toast;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 public class dokter {
 private String nama;
 private String sp;
