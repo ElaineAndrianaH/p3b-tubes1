@@ -1,5 +1,9 @@
 package com.example.tubes1.model;
 
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -57,4 +61,6 @@ public class pertemuan {
     public void setWkt(LocalDateTime wkt) {
         this.wkt = wkt;
     }
+
+
 }

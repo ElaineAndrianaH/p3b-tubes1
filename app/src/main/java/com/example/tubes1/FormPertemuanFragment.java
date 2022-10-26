@@ -19,7 +19,7 @@ import java.util.Calendar;
 
 public class FormPertemuanFragment extends Fragment implements View.OnClickListener{
     private BuatPertemuanBinding binding;
-    private DatePickerDialog datePickerDialog;
+    //private DatePickerDialog datePickerDialog;
     private SimpleDateFormat dateFormat;
     private EditText et;
 
@@ -29,7 +29,7 @@ public class FormPertemuanFragment extends Fragment implements View.OnClickListe
         binding=BuatPertemuanBinding.inflate(inflater,container,false);
         return binding.getRoot();
 
-        this.binding.idEdtDate.setOnClickListener(this::onClick);
+        //this.binding.idEdtDate.setOnClickListener(this::onClick);
 //            @Override
 //            public void onClick(View view) {
 //                datePickerDialog.show();
@@ -37,22 +37,22 @@ public class FormPertemuanFragment extends Fragment implements View.OnClickListe
 
     }
 
-    private void showDateDialog() {
-        Calendar newCalendar = Calendar.getInstance();
-        datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-
-                Calendar newDate = Calendar.getInstance();
-                newDate.set(year, monthOfYear, dayOfMonth);
-
-                binding.idEdtDate.setText(dateFormat.format(newDate.getTime()));
-            }
-
-        }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
-        datePickerDialog.show();
-    }
+//    private void showDateDialog() {
+//        Calendar newCalendar = Calendar.getInstance();
+//        datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+//
+//            @Override
+//            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+//
+//                Calendar newDate = Calendar.getInstance();
+//                newDate.set(year, monthOfYear, dayOfMonth);
+//
+//                binding.idEdtDate.setText(dateFormat.format(newDate.getTime()));
+//            }
+//
+//        }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+//        datePickerDialog.show();
+//    }
 
     @Override
     public void onClick(View view) {

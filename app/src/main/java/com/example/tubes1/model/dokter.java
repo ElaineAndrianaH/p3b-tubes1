@@ -8,9 +8,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class dokter {
-private String nama;
-private String sp;
-private String tlp;
+    private String nama;
+    private String sp;
+    private String tlp;
 
     public dokter(String nama, String sp, String tlp) {
         this.nama = nama;
