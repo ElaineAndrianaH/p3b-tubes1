@@ -4,10 +4,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import com.example.tubes1.model.dokter;
+import com.example.tubes1.presenter.DokterPresenter;
+
 import java.util.List;
 
 public class dokter_adapter extends BaseAdapter {
     private List<dokter> list;
+    private DokterPresenter presenter;
+    public void update(List<dokter> list){
+        this.list=list;
+        this.notifyDataSetChanged();
+    }
+
+    public void setPresenter(DokterPresenter presenter) {
+        this.presenter = presenter;
+    }
 
     @Override
     public int getCount() {

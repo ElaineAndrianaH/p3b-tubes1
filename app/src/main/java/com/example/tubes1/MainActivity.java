@@ -2,13 +2,16 @@ package com.example.tubes1;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentResultListener;
 import androidx.fragment.app.FragmentTransaction;
 
 
 import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.tubes1.contract.MainUI;
 import com.example.tubes1.databinding.ActivityMainBinding;
@@ -37,8 +40,11 @@ public class MainActivity extends AppCompatActivity implements MainUI{
         pf= new PertemuanFragment();
         mp = new MainPresenter(this);
         hf.setMp(mp);
-        String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
-        this.requestPermissions(permissions,WRITE_REQUEST_CODE);
+        String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE};
+        if(ContextCompat.checkSelfPermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
+
+            this.requestPermissions(permissions,WRITE_REQUEST_CODE);
+        }
         this.getSupportFragmentManager().setFragmentResultListener(
                 "changePage", this,new FragmentResultListener(){
                     @Override
@@ -70,6 +76,9 @@ public class MainActivity extends AppCompatActivity implements MainUI{
         FragmentTransaction ft=this.getSupportFragmentManager().beginTransaction();
         this.closeAllPage(ft);
         switch(page){
+            case "Dokter Form":
+                //menuju dokter form
+                break;
             case "Pertemuan Form":
                 if(this.fpf.isAdded()){
                     ft.show(this.fpf);
@@ -124,5 +133,13 @@ public class MainActivity extends AppCompatActivity implements MainUI{
         this.finish();
     }
 
-
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode== WRITE_REQUEST_CODE){
+            if(grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED ){
+                Log.d("masuk","");
+            }
+        }
+    }
 }
