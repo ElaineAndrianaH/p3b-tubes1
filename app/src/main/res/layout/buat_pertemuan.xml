@@ -101,18 +101,24 @@
                 android:hint="Tanggal">
             </TextView>
 
-            <EditText
-                android:id="@+id/idEdtDate"
-                android:layout_width="match_parent"
+            <DatePicker
+                android:id="@+id/datePicker1"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:clickable="false"
-                android:cursorVisible="false"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
-                android:hint="Enter date">
+                android:calendarViewShown="true"/>
 
-            </EditText>
+<!--            <EditText-->
+<!--                android:id="@+id/idEdtDate"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerInParent="true"-->
+<!--                android:clickable="false"-->
+<!--                android:cursorVisible="false"-->
+<!--                android:focusable="false"-->
+<!--                android:focusableInTouchMode="false"-->
+<!--                android:hint="Enter date">-->
+
+<!--            </EditText>-->
         </LinearLayout>
 
         <LinearLayout
@@ -131,10 +137,21 @@
 
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
+                android:layout_height="wrap_content"
+                android:id="@+id/etWaktu">
             </EditText>
+
         </LinearLayout>
 
     </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:text="Simpan">
+
+    </Button>
+
 </RelativeLayout>

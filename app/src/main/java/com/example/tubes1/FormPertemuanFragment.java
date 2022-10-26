@@ -29,6 +29,8 @@ public class FormPertemuanFragment extends Fragment implements View.OnClickListe
         binding=BuatPertemuanBinding.inflate(inflater,container,false);
         return binding.getRoot();
 
+//        this.binding.etWaktu.setOnClickListener(this::onClick);
+
         //this.binding.idEdtDate.setOnClickListener(this::onClick);
 //            @Override
 //            public void onClick(View view) {
