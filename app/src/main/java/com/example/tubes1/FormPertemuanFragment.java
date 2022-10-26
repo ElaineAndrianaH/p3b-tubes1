@@ -36,32 +36,23 @@ public class FormPertemuanFragment extends Fragment implements View.OnClickListe
         binding.idEdtDate.setOnClickListener(this);
 
         //time picker
-        binding.etWaktu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int hour = myCalendar.get(Calendar.HOUR_OF_DAY);
-                int minute = myCalendar.get(Calendar.MINUTE);
-                TimePickerDialog timePickerDialog;
-                timePickerDialog = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                        binding.etWaktu.setText( selectedHour + ":" + selectedMinute);
-                    }
-                }, hour, minute, true); // true means set 24hoursview to true
-                timePickerDialog.setTitle("Select Time");
-                timePickerDialog.show();
-            }
-        });
+        binding.etWaktu.setOnClickListener(this);
         return binding.getRoot();
 
-//        this.binding.etWaktu.setOnClickListener(this::onClick);
 
-        //this.binding.idEdtDate.setOnClickListener(this::onClick);
-//            @Override
-//            public void onClick(View view) {
-//                datePickerDialog.show();
-//            }
-
+    }
+    private void showTime(){
+        int hour = myCalendar.get(Calendar.HOUR_OF_DAY);
+        int minute = myCalendar.get(Calendar.MINUTE);
+        TimePickerDialog timePickerDialog;
+        timePickerDialog = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                binding.etWaktu.setText( selectedHour + ":" + selectedMinute);
+            }
+        }, hour, minute, true); // true means set 24hoursview to true
+        timePickerDialog.setTitle("Select Time");
+        timePickerDialog.show();
     }
 
     private void showDateDialog() {
@@ -85,6 +76,8 @@ public class FormPertemuanFragment extends Fragment implements View.OnClickListe
     public void onClick(View view) {
         if(view==binding.idEdtDate){
             showDateDialog();
+        }else if (view == binding.etWaktu){
+            showTime();
         }
     }
 }
