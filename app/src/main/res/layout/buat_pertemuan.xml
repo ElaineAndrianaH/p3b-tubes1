@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="30dp"
-            android:hint="Buat Pertemuan">
+            android:text="Buat Pertemuan">
 
         </TextView>
 
@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
                 android:padding="5dp"
-                android:hint="Nama">
+                android:text="Nama">
             </TextView>
 
             <EditText
@@ -52,30 +52,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
                 android:padding="5dp"
-                android:hint="Dokter">
-            </TextView>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            </EditText>
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingBottom="30dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:padding="5dp"
-                android:hint="Keluhan">
+                android:text="Dokter">
             </TextView>
 
             <EditText
@@ -98,27 +75,46 @@
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
                 android:padding="5dp"
-                android:hint="Tanggal">
+                android:text="Keluhan">
             </TextView>
 
-            <DatePicker
-                android:id="@+id/datePicker1"
-                android:layout_width="wrap_content"
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </EditText>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="30dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:calendarViewShown="true"/>
+                android:textSize="20dp"
+                android:padding="5dp"
+                android:text="Tanggal">
+            </TextView>
 
-<!--            <EditText-->
-<!--                android:id="@+id/idEdtDate"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_centerInParent="true"-->
-<!--                android:clickable="false"-->
-<!--                android:cursorVisible="false"-->
-<!--                android:focusable="false"-->
-<!--                android:focusableInTouchMode="false"-->
-<!--                android:hint="Enter date">-->
 
-<!--            </EditText>-->
+
+            <EditText
+                android:id="@+id/idEdtDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:hint="Enter date">
+
+            </EditText>
         </LinearLayout>
 
         <LinearLayout
@@ -132,7 +128,7 @@
                 android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:textSize="20dp"
-                android:hint="Waktu">
+                android:text="Waktu">
             </TextView>
 
             <EditText
