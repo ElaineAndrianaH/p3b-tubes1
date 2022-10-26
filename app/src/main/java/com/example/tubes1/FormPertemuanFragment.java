@@ -1,12 +1,14 @@
 package com.example.tubes1;
 
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TimePicker;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,14 +24,34 @@ public class FormPertemuanFragment extends Fragment implements View.OnClickListe
     private BuatPertemuanBinding binding;
     private DatePickerDialog datePickerDialog;
     private SimpleDateFormat dateFormat;
-    private EditText et;
+    private Calendar myCalendar = Calendar.getInstance();
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding=BuatPertemuanBinding.inflate(inflater,container,false);
+
+        //datepicker
         dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
         binding.idEdtDate.setOnClickListener(this);
+
+        //time picker
+        binding.etWaktu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int hour = myCalendar.get(Calendar.HOUR_OF_DAY);
+                int minute = myCalendar.get(Calendar.MINUTE);
+                TimePickerDialog timePickerDialog;
+                timePickerDialog = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                        binding.etWaktu.setText( selectedHour + ":" + selectedMinute);
+                    }
+                }, hour, minute, true); // true means set 24hoursview to true
+                timePickerDialog.setTitle("Select Time");
+                timePickerDialog.show();
+            }
+        });
         return binding.getRoot();
 
 //        this.binding.etWaktu.setOnClickListener(this::onClick);
