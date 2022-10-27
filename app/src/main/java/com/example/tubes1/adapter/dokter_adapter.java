@@ -60,24 +60,30 @@ public class dokter_adapter extends BaseAdapter {
         }else {
             vh=(viewHolder) view.getTag();
         }
-        vh.updateView((dokter) getItem(i));
+        vh.updateView((dokter) getItem(i),i);
         return view;
     }
     private class viewHolder implements View.OnClickListener{
         private DokterPresenter presenter;
         private ListDokterBinding item;
+        private int pos;
 
         public viewHolder(DokterPresenter presenter, ListDokterBinding item) {
             this.presenter = presenter;
             this.item = item;
         }
-        public void updateView(dokter data){
+        public void updateView(dokter data,int pos){
             this.item.NamaDokter.setText(data.getNama());
             this.item.JenisDokter.setText(data.getSp());
+            this.item.hapusButton.setOnClickListener(this);
+            this.pos=pos;
         }
 
         @Override
         public void onClick(View view) {
+            if(view== item.hapusButton){
+                this.presenter.hapusData(this.pos);
+            }
         }
     }
 }

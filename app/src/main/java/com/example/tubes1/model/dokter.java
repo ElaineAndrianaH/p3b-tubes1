@@ -68,13 +68,11 @@ public class dokter implements Comparable<dokter>{
             }
             String textToWrite="";
             for (int i = 0; i < list.size(); i++) {
-                Log.d("Save Data", list.get(i).toString());
                 textToWrite+=list.get(i).toString();
             }
             fot.write(textToWrite.getBytes());
             fot.flush();
             fot.close();
-            Log.d("masuk",file+"");
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -109,9 +107,6 @@ public class dokter implements Comparable<dokter>{
             }
         } catch (IOException e) {
             e.printStackTrace();
-        }
-        for (int i = 0; i < list.size(); i++) {
-            Log.d("Data"+i, list.get(i).toString());
         }
         Collections.sort(list);
         return list;

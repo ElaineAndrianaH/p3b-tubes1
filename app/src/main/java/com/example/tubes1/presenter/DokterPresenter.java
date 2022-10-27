@@ -41,9 +41,12 @@ public class DokterPresenter {
     }
     public void loadData() {
         this.list=dokter.loadData(context);
-        for (int i = 0; i < this.list.size(); i++) {
-            Log.d("Data"+i, this.list.get(i).toString());
-        }
+        this.ui.updateList(this.list);
+    }
+    public void hapusData(int position){
+        Log.d("hapus", position+"");
+        this.list.remove(position);
+        this.saveData();
         this.ui.updateList(this.list);
     }
 
