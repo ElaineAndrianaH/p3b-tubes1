@@ -35,6 +35,7 @@ public class DokterPresenter {
         this.ui.listenerOnClick(page);
     }
 
+
     public void saveData(){
         dokter.saveData(context,this.list);
     }

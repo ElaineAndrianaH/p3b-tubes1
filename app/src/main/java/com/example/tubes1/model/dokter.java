@@ -13,10 +13,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-public class dokter {
+public class dokter implements Comparable<dokter>{
     private String nama;
     private String sp;
     private String tlp;
@@ -112,6 +113,12 @@ public class dokter {
         for (int i = 0; i < list.size(); i++) {
             Log.d("Data"+i, list.get(i).toString());
         }
+        Collections.sort(list);
         return list;
+    }
+
+    @Override
+    public int compareTo(dokter dokter) {
+        return this.getNama().compareTo(dokter.getNama());
     }
 }
