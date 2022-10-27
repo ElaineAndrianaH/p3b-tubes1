@@ -22,6 +22,7 @@ public class DokterFragment extends Fragment implements DokterUI,View.OnClickLis
     private dokter_adapter adapter;
     private DokterPresenter presenter;
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -32,7 +33,13 @@ public class DokterFragment extends Fragment implements DokterUI,View.OnClickLis
         adapter.setPresenter(presenter);
         binding.btn.setOnClickListener(this);
         binding.idLVLanguages.setAdapter(adapter);
+        loadData();
         return binding.getRoot();
+    }
+
+    @Override
+    public void loadData() {
+        presenter.loadData();
     }
 
     @Override

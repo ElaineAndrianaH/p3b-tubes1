@@ -29,7 +29,6 @@ public class DokterPresenter {
         this.ui = ui;
         this.list= new LinkedList<dokter>();
         this.context = context;
-        loadData();
     }
 
     public void changeListener(String page){
@@ -40,7 +39,11 @@ public class DokterPresenter {
         dokter.saveData(context,this.list);
     }
     public void loadData() {
-        this.ui.updateList(dokter.loadData(context));
+        this.list=dokter.loadData(context);
+        for (int i = 0; i < this.list.size(); i++) {
+            Log.d("Data"+i, this.list.get(i).toString());
+        }
+        this.ui.updateList(this.list);
     }
 
 }

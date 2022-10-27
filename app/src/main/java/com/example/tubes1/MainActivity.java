@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements MainUI{
     private MainPresenter mp;
     private DokterFragment df;
     private PertemuanFragment pf;
+    private FormDokterFragment fd;
     public static final int WRITE_REQUEST_CODE =1;
 
     @Override
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements MainUI{
         hf= new HomeFragment();
         fpf= new FormPertemuanFragment();
         pf= new PertemuanFragment();
+        fd = new FormDokterFragment();
         mp = new MainPresenter(this);
         hf.setMp(mp);
         String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE};
@@ -77,7 +79,12 @@ public class MainActivity extends AppCompatActivity implements MainUI{
         this.closeAllPage(ft);
         switch(page){
             case "Dokter Form":
-                //menuju dokter form
+                if(this.fd.isAdded()){
+                    this.fd.loadData();
+                    ft.show(this.fd);
+                }else{
+                    ft.add(binding.fragmentContainer.getId(),this.fd).addToBackStack(null);
+                }
                 break;
             case "Pertemuan Form":
                 if(this.fpf.isAdded()){
@@ -88,6 +95,7 @@ public class MainActivity extends AppCompatActivity implements MainUI{
                 break;
             case "Dokter":
                 if(this.df.isAdded()){
+                    this.df.loadData();
                     ft.show(this.df);
                 }else{
                     ft.add(binding.fragmentContainer.getId(),this.df).addToBackStack(null);
@@ -124,6 +132,9 @@ public class MainActivity extends AppCompatActivity implements MainUI{
         }
         if(this.pf.isAdded()){
             ft.hide(this.pf);
+        }
+        if(this.fd.isAdded()){
+            ft.hide(this.fd);
         }
     }
 

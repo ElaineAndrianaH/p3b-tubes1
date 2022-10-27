@@ -67,6 +67,7 @@ public class dokter {
             }
             String textToWrite="";
             for (int i = 0; i < list.size(); i++) {
+                Log.d("Save Data", list.get(i).toString());
                 textToWrite+=list.get(i).toString();
             }
             fot.write(textToWrite.getBytes());
@@ -102,11 +103,14 @@ public class dokter {
                 String[] res=line.split(";");
                 for (int i = 0; i < res.length; i++) {
                     String[] resData=res[i].split(",");
-                    list.add(new dokter(res[0],res[1],res[2]));
+                    list.add(new dokter(resData[0],resData[1],resData[2]));
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
+        }
+        for (int i = 0; i < list.size(); i++) {
+            Log.d("Data"+i, list.get(i).toString());
         }
         return list;
     }

@@ -14,7 +14,7 @@
             android:layout_height="wrap_content"
             android:textSize="30dp"
             android:layout_marginBottom="10dp"
-            android:hint="Buat Daftar Dokter">
+            android:text="Buat Daftar Dokter">
         </TextView>
 
         <LinearLayout
@@ -26,30 +26,48 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="110dp"
-                android:hint="Nama Dokter"
+                android:text="Nama Dokter"
                 android:textSize="25dp">
             </TextView>
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/etNamaDokter"
                 android:layout_marginBottom="20dp">
             </EditText>
 
             <TextView
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:hint="Spesialis"
+                android:text="Spesialis"
                 android:textSize="25dp">
             </TextView>
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/etSpesialis"
+                android:layout_marginBottom="20dp">
+            </EditText>
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Telepon"
+                android:textSize="25dp">
+            </TextView>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/etTelepon"
                 android:layout_marginBottom="20dp">
             </EditText>
 
         </LinearLayout>
+
+
     </LinearLayout>
 
     <Button
@@ -57,6 +75,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_alignParentBottom="true"
+        android:id="@+id/idBtnSubmitFormDokter"
         android:textSize="30dp"
         android:hint="Submit">
 
