@@ -55,6 +55,7 @@ public class DokterPresenter {
             while (line != null) {
                 stringBuilder.append(line).append('\n');
                 line = reader.readLine();
+
                 Log.d("masuk","");
             }
         } catch (IOException e) {
@@ -70,7 +71,7 @@ public class DokterPresenter {
         File file;
         FileOutputStream fot= null;
         try {
-            file= new File(filename);
+            file= new File(this.context.getExternalFilesDir(Environment.DIRECTORY_PICTURES),filename);
             fot= new FileOutputStream(file);
             if(!file.exists()){
                 file.createNewFile();

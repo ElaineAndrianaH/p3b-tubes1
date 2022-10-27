@@ -26,11 +26,12 @@ public class DokterFragment extends Fragment implements DokterUI,View.OnClickLis
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DaftarDokterBinding.inflate(inflater, container, false);
-        adapter = new dokter_adapter();
+        adapter = new dokter_adapter(inflater);
         presenter = new DokterPresenter(this,getContext());
         //inisialisasi presenter di adapter, spy dapet si line 30
         adapter.setPresenter(presenter);
         binding.btn.setOnClickListener(this);
+        binding.idLVLanguages.setAdapter(adapter);
         return binding.getRoot();
     }
 
