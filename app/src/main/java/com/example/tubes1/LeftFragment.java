@@ -27,7 +27,6 @@ public class LeftFragment extends Fragment implements LeftUI{
         adapter.setPresenter(presenter);
         //isi si listleft pake si adapternya
         fragmentLeftBinding.listLeft.setAdapter(adapter);
-
         return fragmentLeftBinding.getRoot();
     }
 
