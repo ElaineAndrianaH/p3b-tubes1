@@ -62,7 +62,7 @@ public class pertemuan_adapter extends BaseAdapter {
         return view;
     }
 
-    private class viewHolder implements View.OnClickListener{
+    public class viewHolder implements View.OnClickListener{
         private ItemPertemuanBinding binding;
         private PertemuanPresenter presenter;
         private int pos;

@@ -116,6 +116,15 @@ public class MainActivity extends AppCompatActivity implements MainUI{
 //                    ft.add(binding.fragmentContainer.getId(),this.pf).addToBackStack(null);
 //                }
                 break;
+            case "Pengaturan":
+                ft.replace(binding.fragmentContainer.getId(),new PengaturanFragment());
+                ft.addToBackStack(null);
+//                if(this.pf.isAdded()){
+//                    ft.show(this.pf);
+//                }else{
+//                    ft.add(binding.fragmentContainer.getId(),this.pf).addToBackStack(null);
+//                }
+                break;
             default:
                 ft.replace(binding.fragmentContainer.getId(),new HomeFragment(mp));
                 ft.addToBackStack(null);
