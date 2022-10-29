@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.tubes1.adapter.DokterSpinner_adapter;
 import com.example.tubes1.databinding.BuatPertemuanBinding;
 
 import java.text.SimpleDateFormat;
@@ -25,6 +26,7 @@ public class FormPertemuanFragment extends Fragment implements View.OnClickListe
     private DatePickerDialog datePickerDialog;
     private SimpleDateFormat dateFormat;
     private Calendar myCalendar = Calendar.getInstance();
+    private DokterSpinner_adapter spinner;
 
     @Nullable
     @Override
@@ -37,6 +39,9 @@ public class FormPertemuanFragment extends Fragment implements View.OnClickListe
 
         //time picker
         binding.etWaktu.setOnClickListener(this);
+        //buat spinner
+        spinner = new DokterSpinner_adapter(inflater);
+
         return binding.getRoot();
 
 

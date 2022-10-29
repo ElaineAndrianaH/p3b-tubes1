@@ -33,14 +33,10 @@ public class DokterFragment extends Fragment implements DokterUI,View.OnClickLis
         adapter.setPresenter(presenter);
         binding.btn.setOnClickListener(this);
         binding.idLVLanguages.setAdapter(adapter);
-        loadData();
         return binding.getRoot();
     }
 
-    @Override
-    public void loadData() {
-        presenter.loadData();
-    }
+
 
     @Override
     public void updateList(List<dokter> list) {

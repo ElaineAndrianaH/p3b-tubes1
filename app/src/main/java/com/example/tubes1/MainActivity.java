@@ -22,12 +22,12 @@ import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity implements MainUI{
     private ActivityMainBinding binding;
-    private HomeFragment hf;
-    private FormPertemuanFragment fpf;
-    private MainPresenter mp;
-    private DokterFragment df;
-    private PertemuanFragment pf;
-    private FormDokterFragment fd;
+//    private HomeFragment hf;
+//    private FormPertemuanFragment fpf;
+   private MainPresenter mp;
+//    private DokterFragment df;
+//    private PertemuanFragment pf;
+//    private FormDokterFragment fd;
     public static final int WRITE_REQUEST_CODE =1;
 
     @Override
@@ -35,13 +35,13 @@ public class MainActivity extends AppCompatActivity implements MainUI{
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        df=new DokterFragment();
-        hf= new HomeFragment();
-        fpf= new FormPertemuanFragment();
-        pf= new PertemuanFragment();
-        fd = new FormDokterFragment();
+//        df=new DokterFragment();
+//        hf= new HomeFragment();
+//        fpf= new FormPertemuanFragment();
+//        pf= new PertemuanFragment();
+//        fd = new FormDokterFragment();
         mp = new MainPresenter(this);
-        hf.setMp(mp);
+//        hf.setMp(mp);
         String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE};
         if(ContextCompat.checkSelfPermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
 
@@ -76,67 +76,77 @@ public class MainActivity extends AppCompatActivity implements MainUI{
     @Override
     public void changePage(String page) {
         FragmentTransaction ft=this.getSupportFragmentManager().beginTransaction();
-        this.closeAllPage(ft);
+//        this.closeAllPage(ft);
         switch(page){
             case "Dokter Form":
-                if(this.fd.isAdded()){
-                    this.fd.loadData();
-                    ft.show(this.fd);
-                }else{
-                    ft.add(binding.fragmentContainer.getId(),this.fd).addToBackStack(null);
-                }
+                ft.replace(binding.fragmentContainer.getId(),new FormDokterFragment());
+                ft.addToBackStack(null);
+//                if(this.fd.isAdded()){
+//                    this.fd.loadData();
+//                    ft.show(this.fd);
+//                }else{
+//                    ft.add(binding.fragmentContainer.getId(),this.fd).addToBackStack(null);
+//                }
                 break;
             case "Pertemuan Form":
-                if(this.fpf.isAdded()){
-                    ft.show(this.fpf);
-                }else{
-                    ft.add(binding.fragmentContainer.getId(),this.fpf).addToBackStack(null);
-                }
+                ft.replace(binding.fragmentContainer.getId(),new FormPertemuanFragment());
+                ft.addToBackStack(null);
+//                if(this.fpf.isAdded()){
+//                    ft.show(this.fpf);
+//                }else{
+//                    ft.add(binding.fragmentContainer.getId(),this.fpf).addToBackStack(null);
+//                }
                 break;
             case "Dokter":
-                if(this.df.isAdded()){
-                    this.df.loadData();
-                    ft.show(this.df);
-                }else{
-                    ft.add(binding.fragmentContainer.getId(),this.df).addToBackStack(null);
-                }
+                ft.replace(binding.fragmentContainer.getId(),new DokterFragment());
+                ft.addToBackStack(null);
+//                if(this.df.isAdded()){
+//                    this.df.loadData();
+//                    ft.show(this.df);
+//                }else{
+//                    ft.add(binding.fragmentContainer.getId(),this.df).addToBackStack(null);
+//                }
                 break;
             case "Pertemuan":
-                if(this.pf.isAdded()){
-                    ft.show(this.pf);
-                }else{
-                    ft.add(binding.fragmentContainer.getId(),this.pf).addToBackStack(null);
-                }
+                ft.replace(binding.fragmentContainer.getId(),new PertemuanFragment());
+                ft.addToBackStack(null);
+//                if(this.pf.isAdded()){
+//                    ft.show(this.pf);
+//                }else{
+//                    ft.add(binding.fragmentContainer.getId(),this.pf).addToBackStack(null);
+//                }
                 break;
             default:
-                if(this.hf.isAdded()){
-                    ft.show(this.hf);
-                }else{
-                    ft.add(binding.fragmentContainer.getId(),this.hf);
-                }
+                ft.replace(binding.fragmentContainer.getId(),new HomeFragment(mp));
+                ft.addToBackStack(null);
+//                if(this.hf.isAdded()){
+//                    ft.show(this.hf);
+//                }else{
+//                    ft.add(binding.fragmentContainer.getId(),this.hf);
+//                }
         }
 
         ft.commit();
     }
 
-    @Override
-    public void closeAllPage(FragmentTransaction ft) {
-        if(this.hf.isAdded()){
-            ft.hide(this.hf);
-        }
-        if(this.fpf.isAdded()){
-            ft.hide(this.fpf);
-        }
-        if(this.df.isAdded()){
-            ft.hide(this.df);
-        }
-        if(this.pf.isAdded()){
-            ft.hide(this.pf);
-        }
-        if(this.fd.isAdded()){
-            ft.hide(this.fd);
-        }
-    }
+//    @Override
+//    public void closeAllPage(FragmentTransaction ft) {
+//        if(this.hf.isAdded()){
+//            ft.hide(this.hf);
+//        }
+//        if(this.fpf.isAdded()){
+//            ft.hide(this.fpf);
+//        }
+//        if(this.df.isAdded()){
+//            ft.hide(this.df);
+//        }
+//        if(this.pf.isAdded()){
+//            ft.hide(this.pf);
+//        }
+//        if(this.fd.isAdded()){
+//            ft.hide(this.fd);
+//        }
+//    }
 
     @Override
     public void closeApp() {

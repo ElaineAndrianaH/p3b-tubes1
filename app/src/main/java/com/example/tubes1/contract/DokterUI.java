@@ -6,7 +6,6 @@ import java.util.List;
 
 
 public interface DokterUI {
-    public  void loadData();
     public void updateList(List<dokter> list);
     public void listenerOnClick (String page);
 

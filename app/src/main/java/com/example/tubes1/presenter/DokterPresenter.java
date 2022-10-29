@@ -29,6 +29,7 @@ public class DokterPresenter {
         this.ui = ui;
         this.list= new LinkedList<dokter>();
         this.context = context;
+        this.loadData();
     }
 
     public void changeListener(String page){

@@ -17,13 +17,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private FragmentHomeBinding fh;
     private MainPresenter mp;
 
-    public MainPresenter getMp() {
-        return mp;
-    }
-
-    public void setMp(MainPresenter mp) {
+    public HomeFragment(MainPresenter mp) {
         this.mp = mp;
     }
+
+
+
 
     @Nullable
     @Override
