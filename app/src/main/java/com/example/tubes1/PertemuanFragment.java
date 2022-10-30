@@ -1,5 +1,7 @@
 package com.example.tubes1;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,5 +38,12 @@ public class PertemuanFragment extends Fragment implements PertemuanUI{
     @Override
     public void updateList(List<pertemuan> list) {
         adapter.update(list);
+    }
+
+    @Override
+    public void callActivity(String tlp) {
+        Intent i = new Intent(Intent.ACTION_DIAL);
+        i.setData(Uri.parse("tel:"+tlp));
+        startActivity(i);
     }
 }

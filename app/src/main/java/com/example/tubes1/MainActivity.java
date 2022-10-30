@@ -46,7 +46,13 @@ public class MainActivity extends AppCompatActivity implements MainUI{
                     @Override
                     public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result){
                         String page = result.getString("page");
-                        changePage(page);
+                        int pos=result.getInt("pos");
+
+                        if(page=="Dokter Form"||page=="Pertemuan Form"){
+                            changePage(page,pos);
+                        }else{
+                            changePage(page);
+                        }
                         binding.drawerLayout.closeDrawers();
                     }
 
@@ -70,86 +76,53 @@ public class MainActivity extends AppCompatActivity implements MainUI{
     @Override
     public void changePage(String page) {
         FragmentTransaction ft=this.getSupportFragmentManager().beginTransaction();
-//        this.closeAllPage(ft);
         switch(page){
             case "Dokter Form":
                 ft.replace(binding.fragmentContainer.getId(),new FormDokterFragment());
                 ft.addToBackStack(null);
-//                if(this.fd.isAdded()){
-//                    this.fd.loadData();
-//                    ft.show(this.fd);
-//                }else{
-//                    ft.add(binding.fragmentContainer.getId(),this.fd).addToBackStack(null);
-//                }
                 break;
             case "Pertemuan Form":
                 ft.replace(binding.fragmentContainer.getId(),new FormPertemuanFragment());
                 ft.addToBackStack(null);
-//                if(this.fpf.isAdded()){
-//                    ft.show(this.fpf);
-//                }else{
-//                    ft.add(binding.fragmentContainer.getId(),this.fpf).addToBackStack(null);
-//                }
                 break;
             case "Dokter":
                 ft.replace(binding.fragmentContainer.getId(),new DokterFragment());
                 ft.addToBackStack(null);
-//                if(this.df.isAdded()){
-//                    this.df.loadData();
-//                    ft.show(this.df);
-//                }else{
-//                    ft.add(binding.fragmentContainer.getId(),this.df).addToBackStack(null);
-//                }
                 break;
             case "Pertemuan":
                 ft.replace(binding.fragmentContainer.getId(),new PertemuanFragment());
                 ft.addToBackStack(null);
-//                if(this.pf.isAdded()){
-//                    ft.show(this.pf);
-//                }else{
-//                    ft.add(binding.fragmentContainer.getId(),this.pf).addToBackStack(null);
-//                }
                 break;
             case "Pengaturan":
                 ft.replace(binding.fragmentContainer.getId(),new PengaturanFragment());
                 ft.addToBackStack(null);
-//                if(this.pf.isAdded()){
-//                    ft.show(this.pf);
-//                }else{
-//                    ft.add(binding.fragmentContainer.getId(),this.pf).addToBackStack(null);
-//                }
                 break;
             default:
                 ft.replace(binding.fragmentContainer.getId(),new HomeFragment());
                 ft.addToBackStack(null);
-//                if(this.hf.isAdded()){
-//                    ft.show(this.hf);
-//                }else{
-//                    ft.add(binding.fragmentContainer.getId(),this.hf);
-//                }
         }
 
         ft.commit();
     }
 
-//    @Override
-//    public void closeAllPage(FragmentTransaction ft) {
-//        if(this.hf.isAdded()){
-//            ft.hide(this.hf);
-//        }
-//        if(this.fpf.isAdded()){
-//            ft.hide(this.fpf);
-//        }
-//        if(this.df.isAdded()){
-//            ft.hide(this.df);
-//        }
-//        if(this.pf.isAdded()){
-//            ft.hide(this.pf);
-//        }
-//        if(this.fd.isAdded()){
-//            ft.hide(this.fd);
-//        }
-//    }
+    @Override
+    public void changePage(String page, int pos) {
+        FragmentTransaction ft=this.getSupportFragmentManager().beginTransaction();
+        switch(page){
+            case "Dokter Form":
+                ft.replace(binding.fragmentContainer.getId(),FormDokterFragment.newInstance(pos));
+                ft.addToBackStack(null);
+                break;
+            case "Pertemuan Form":
+                ft.replace(binding.fragmentContainer.getId(),new FormPertemuanFragment());
+                ft.addToBackStack(null);
+                break;
+        }
+
+        ft.commit();
+
+
+    }
 
     @Override
     public void closeApp() {

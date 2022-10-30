@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface PertemuanUI {
     public void updateList(List<pertemuan> list);
+    public void callActivity(String tlp);
 
 }

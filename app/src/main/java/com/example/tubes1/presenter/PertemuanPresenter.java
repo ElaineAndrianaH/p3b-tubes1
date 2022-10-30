@@ -30,4 +30,7 @@ public class PertemuanPresenter {
         pertemuan.saveData(context,this.list);
         this.ui.updateList(this.list);
     }
+    public void callDokter(int pos){
+        this.ui.callActivity(list.get(pos).getDokter().getTlp());
+    }
 }

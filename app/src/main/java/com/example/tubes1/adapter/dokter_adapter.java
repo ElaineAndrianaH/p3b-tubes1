@@ -1,5 +1,6 @@
 package com.example.tubes1.adapter;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,6 +77,7 @@ public class dokter_adapter extends BaseAdapter {
             this.item.NamaDokter.setText(data.getNama());
             this.item.JenisDokter.setText(data.getSp());
             this.item.hapusButton.setOnClickListener(this);
+            this.item.btnEdit.setOnClickListener(this);
             this.pos=pos;
         }
 
@@ -83,6 +85,10 @@ public class dokter_adapter extends BaseAdapter {
         public void onClick(View view) {
             if(view== item.hapusButton){
                 this.presenter.hapusData(this.pos);
+            }
+            if(view==item.btnEdit){
+                Log.d("masuk", "onClick: ");
+                this.presenter.changeListener("Dokter Form",this.pos);
             }
         }
     }

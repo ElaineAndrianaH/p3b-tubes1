@@ -32,6 +32,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
        if(view==this.fh.btn){
            Bundle res = new Bundle();
            res.putString("page", "Pertemuan Form");
+           res.putInt("pos", -1);
            this.getParentFragmentManager().setFragmentResult("changePage", res);
        }
     }

@@ -1,5 +1,8 @@
 package com.example.tubes1.adapter;
 
+import android.content.Intent;
+import android.net.Uri;
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -86,6 +89,8 @@ public class pertemuan_adapter extends BaseAdapter {
         public void onClick(View view) {
             if(view == binding.btnDelete){
                 this.presenter.hapusData(pos);
+            }else if (view == binding.btnContact){
+               this.presenter.callDokter(pos);
             }
         }
     }

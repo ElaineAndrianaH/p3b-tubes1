@@ -1,6 +1,7 @@
 package com.example.tubes1;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,13 +22,22 @@ public class FormDokterFragment extends Fragment implements View.OnClickListener
     private BuatDokterBinding binding;
     private FormDokterPresenter presenter;
 
+    public FormDokterFragment() {
+    }
+
+    public static FormDokterFragment newInstance(int pos){
+        FormDokterFragment fragment = new FormDokterFragment();
+        Bundle args = new Bundle();
+        args.putInt("pos",pos);
+        fragment.setArguments(args);
+        return fragment;
+    }
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = BuatDokterBinding.inflate(inflater, container, false);
         binding.idBtnSubmitFormDokter.setOnClickListener(this);
-        presenter=new FormDokterPresenter(this,getContext());
-        loadData();
+        presenter=new FormDokterPresenter(this,getContext(),this.getArguments().getInt("pos",-1));
         return binding.getRoot();
     }
 
@@ -54,5 +64,12 @@ public class FormDokterFragment extends Fragment implements View.OnClickListener
         Bundle res = new Bundle();
         res.putString("page", page);
         this.getParentFragmentManager().setFragmentResult("changePage", res);
+    }
+
+    @Override
+    public void loadDataEdit(dokter data) {
+        binding.etNamaDokter.setText(data.getNama());
+        binding.etSpesialis.setText(data.getSp());
+        binding.etTelepon.setText(data.getTlp());
     }
 }

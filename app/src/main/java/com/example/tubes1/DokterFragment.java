@@ -44,16 +44,17 @@ public class DokterFragment extends Fragment implements DokterUI,View.OnClickLis
     }
 
     @Override
-    public void listenerOnClick(String page) {
+    public void listenerOnClick(String page,int pos) {
         Bundle res = new Bundle();
         res.putString("page", page);
+        res.putInt("pos",pos);
         this.getParentFragmentManager().setFragmentResult("changePage", res);
     }
 
     @Override
     public void onClick(View view) {
               if(view == binding.btn){
-                  listenerOnClick("Dokter Form");
+                  listenerOnClick("Dokter Form",-1);
               }
     }
 }

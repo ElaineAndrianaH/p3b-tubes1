@@ -32,8 +32,8 @@ public class DokterPresenter {
         this.loadData();
     }
 
-    public void changeListener(String page){
-        this.ui.listenerOnClick(page);
+    public void changeListener(String page,int pos){
+        this.ui.listenerOnClick(page,pos);
     }
 
 
