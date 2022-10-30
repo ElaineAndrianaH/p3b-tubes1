@@ -28,14 +28,14 @@ public class FormDokterPresenter {
     public void addDokter(dokter newDokter){
         this.list.add(newDokter);
         saveData();
-        ui.resetForm();
+//        ui.resetForm();
         ui.listenerOnClick("Dokter");
 
     }
     public void editDokter(int pos,dokter editDokter){
         this.list.remove(pos);
         this.list.add(editDokter);
-        ui.resetForm();
+//        ui.resetForm();
         ui.listenerOnClick("Dokter");
 
     }

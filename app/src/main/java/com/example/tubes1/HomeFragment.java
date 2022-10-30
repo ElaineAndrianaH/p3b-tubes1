@@ -11,15 +11,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.tubes1.databinding.FragmentHomeBinding;
-import com.example.tubes1.presenter.MainPresenter;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
     private FragmentHomeBinding fh;
-    private MainPresenter mp;
-
-    public HomeFragment(MainPresenter mp) {
-        this.mp = mp;
-    }
 
 
 
@@ -35,6 +29,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        mp.goToPertemuanForm();
+       if(view==this.fh.btn){
+           Bundle res = new Bundle();
+           res.putString("page", "Pertemuan Form");
+           this.getParentFragmentManager().setFragmentResult("changePage", res);
+       }
     }
+
 }

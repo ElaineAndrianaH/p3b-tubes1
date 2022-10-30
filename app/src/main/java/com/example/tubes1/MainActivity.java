@@ -34,14 +34,8 @@ public class MainActivity extends AppCompatActivity implements MainUI{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-//        df=new DokterFragment();
-//        hf= new HomeFragment();
-//        fpf= new FormPertemuanFragment();
-//        pf= new PertemuanFragment();
-//        fd = new FormDokterFragment();
         mp = new MainPresenter(this);
-//        hf.setMp(mp);
+        setContentView(binding.getRoot());
         String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE};
         if(ContextCompat.checkSelfPermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
 
@@ -126,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements MainUI{
 //                }
                 break;
             default:
-                ft.replace(binding.fragmentContainer.getId(),new HomeFragment(mp));
+                ft.replace(binding.fragmentContainer.getId(),new HomeFragment());
                 ft.addToBackStack(null);
 //                if(this.hf.isAdded()){
 //                    ft.show(this.hf);

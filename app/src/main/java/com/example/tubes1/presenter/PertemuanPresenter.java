@@ -18,7 +18,6 @@ public class PertemuanPresenter {
         this.ui = ui;
         this.context = context;
         this.list= new LinkedList<pertemuan>();
-        pertemuan.saveData(context,this.list);
         this.loadData();
     }
     public void loadData(){

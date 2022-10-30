@@ -2,6 +2,7 @@ package com.example.tubes1.model;
 
 import android.content.Context;
 import android.os.Environment;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -88,7 +89,8 @@ public class pertemuan implements Comparable<pertemuan> {
             if(!file.exists()){
                 file.createNewFile();
             }
-            String textToWrite="12-12-2022,8.00,tomi,sakit,tom,jerry,12345";
+            String textToWrite="";
+            Log.d( "saveData: ",list.size()+"");
             for (int i = 0; i < list.size(); i++) {
                 textToWrite+=list.get(i).toString();
             }

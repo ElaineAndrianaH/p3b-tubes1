@@ -3,6 +3,7 @@ package com.example.tubes1;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,18 +16,24 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.tubes1.adapter.DokterSpinner_adapter;
+import com.example.tubes1.contract.PertemuanFormUI;
 import com.example.tubes1.databinding.BuatPertemuanBinding;
+import com.example.tubes1.model.dokter;
+import com.example.tubes1.model.pertemuan;
+import com.example.tubes1.presenter.FormPertemuanPresenter;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 
-public class FormPertemuanFragment extends Fragment implements View.OnClickListener{
+public class FormPertemuanFragment extends Fragment implements View.OnClickListener, PertemuanFormUI {
     private BuatPertemuanBinding binding;
     private DatePickerDialog datePickerDialog;
     private SimpleDateFormat dateFormat;
     private Calendar myCalendar = Calendar.getInstance();
     private DokterSpinner_adapter spinner;
+    private FormPertemuanPresenter presenter;
 
     @Nullable
     @Override
@@ -39,9 +46,12 @@ public class FormPertemuanFragment extends Fragment implements View.OnClickListe
 
         //time picker
         binding.etWaktu.setOnClickListener(this);
+
+        binding.btnSimpan.setOnClickListener(this);
         //buat spinner
         spinner = new DokterSpinner_adapter(inflater);
-
+        presenter = new FormPertemuanPresenter(this,getContext());
+        binding.spinner.setAdapter(spinner);
         return binding.getRoot();
 
 
@@ -81,8 +91,23 @@ public class FormPertemuanFragment extends Fragment implements View.OnClickListe
     public void onClick(View view) {
         if(view==binding.idEdtDate){
             showDateDialog();
-        }else if (view == binding.etWaktu){
+        }else if (view == binding.etWaktu) {
             showTime();
+        }else if (view==binding.btnSimpan){
+            //Log.d("masuk",binding.spinner.getSelectedItem().toString());
+            presenter.addPertemuan(new pertemuan(binding.namaPasien.getText().toString(),(dokter) binding.spinner.getSelectedItem(),binding.keluhan.getText().toString(),binding.idEdtDate.getText().toString(),binding.etWaktu.getText().toString()));
         }
+    }
+
+    @Override
+    public void updateList(List<dokter> dokter) {
+        spinner.updateList(dokter);
+    }
+
+    @Override
+    public void listenerOnClick(String page) {
+        Bundle res = new Bundle();
+        res.putString("page", page);
+        this.getParentFragmentManager().setFragmentResult("changePage", res);
     }
 }
