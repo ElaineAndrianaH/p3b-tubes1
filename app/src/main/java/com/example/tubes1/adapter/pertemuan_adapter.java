@@ -81,7 +81,7 @@ public class pertemuan_adapter extends BaseAdapter {
             this.binding.NamaDokter.setText(pertemuan.getDokter().getNama());
             this.binding.btnContact.setOnClickListener(this);
             this.binding.btnDelete.setOnClickListener(this);
-            this.binding.btnEdit.setOnClickListener(this);
+            //this.binding.btnEdit.setOnClickListener(this);
 
         }
 
