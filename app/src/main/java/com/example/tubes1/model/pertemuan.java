@@ -27,6 +27,16 @@ public class pertemuan implements Comparable<pertemuan> {
     private String keluhan;
     private String tgl;
     private String wkt;
+    private boolean status;
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
     private static String filename = "pertemuan.data";
     public pertemuan(String pasien, dokter dokter, String keluhan, String tgl, String wkt) {
         this.pasien = pasien;
@@ -34,6 +44,7 @@ public class pertemuan implements Comparable<pertemuan> {
         this.keluhan = keluhan;
         this.tgl = tgl;
         this.wkt = wkt;
+        this.status = false;
     }
 
     public String getPasien() {
@@ -78,7 +89,7 @@ public class pertemuan implements Comparable<pertemuan> {
 
     @Override
     public String toString() {
-        return this.tgl + "," + this.wkt + "," + this.pasien + "," + this.keluhan + ","  + this.dokter.getNama() + "," + this.dokter.getSp()+ "," + this.dokter.getTlp() + ";";
+        return this.tgl + "," + this.wkt + "," + this.pasien + "," + this.keluhan + ","  + this.dokter.getNama() + "," + this.dokter.getSp()+ "," + this.dokter.getTlp() +"," + this.status+ ";";
     }
     public static void saveData(Context context, List<pertemuan> list) {
         File file;
@@ -116,6 +127,7 @@ public class pertemuan implements Comparable<pertemuan> {
         try {
             fis = new FileInputStream(file);
         } catch (FileNotFoundException e) {
+
             e.printStackTrace();
         }
         InputStreamReader inputStreamReader =
@@ -126,7 +138,9 @@ public class pertemuan implements Comparable<pertemuan> {
                 String[] res=line.split(";");
                 for (int i = 0; i < res.length; i++) {
                     String[] resData=res[i].split(",");
-                    list.add(new pertemuan(resData[2],new dokter(resData[4],resData[5],resData[6]),resData[3],resData[0],resData[1] ));
+                    pertemuan p=new pertemuan(resData[2],new dokter(resData[4],resData[5],resData[6]),resData[3],resData[0],resData[1] );
+                    p.setStatus(Boolean.valueOf(resData[7]));
+                    list.add(p);
                 }
             }
         } catch (IOException e) {

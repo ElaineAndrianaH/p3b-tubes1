@@ -39,11 +39,17 @@
             android:id="@+id/btn_contact"
             android:src="@android:drawable/ic_menu_call"/>
 
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/btn_star_big_off"
+            android:id="@+id/status"/>
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btn_delete"
             android:src="@android:drawable/ic_menu_delete"/>
+
     </LinearLayout>
 </RelativeLayout>

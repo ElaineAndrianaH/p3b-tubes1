@@ -33,4 +33,13 @@ public class PertemuanPresenter {
     public void callDokter(int pos){
         this.ui.callActivity(list.get(pos).getDokter().getTlp());
     }
+    public void etStatus(int pos){
+        pertemuan p=this.list.get(pos);
+        p.setStatus(!p.isStatus());
+        this.list.remove(pos);
+        this.list.add(p);
+        pertemuan.saveData(context,this.list);
+        this.ui.updateList(this.list);
+
+    }
 }

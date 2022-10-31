@@ -10,6 +10,7 @@ import android.widget.BaseAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
+import android.R;
 
 import com.example.tubes1.databinding.ItemPertemuanBinding;
 import com.example.tubes1.model.dokter;
@@ -81,6 +82,10 @@ public class pertemuan_adapter extends BaseAdapter {
             this.binding.NamaDokter.setText(pertemuan.getDokter().getNama());
             this.binding.btnContact.setOnClickListener(this);
             this.binding.btnDelete.setOnClickListener(this);
+            binding.status.setImageResource(R.drawable.btn_star_big_off);
+            if(pertemuan.isStatus())
+                binding.status.setImageResource(R.drawable.btn_star_big_on);
+            this.binding.status.setOnClickListener(this);
             //this.binding.btnEdit.setOnClickListener(this);
 
         }
@@ -91,6 +96,9 @@ public class pertemuan_adapter extends BaseAdapter {
                 this.presenter.hapusData(pos);
             }else if (view == binding.btnContact){
                this.presenter.callDokter(pos);
+            }else if(view== binding.status){
+
+                this.presenter.etStatus(pos);
             }
         }
     }
