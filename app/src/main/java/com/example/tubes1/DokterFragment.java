@@ -1,10 +1,17 @@
 package com.example.tubes1;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -21,6 +28,7 @@ public class DokterFragment extends Fragment implements DokterUI,View.OnClickLis
     private DaftarDokterBinding binding;
     private dokter_adapter adapter;
     private DokterPresenter presenter;
+    ActivityResultLauncher<Intent> activityResultLauncher;
 
 
     @Nullable
@@ -33,9 +41,9 @@ public class DokterFragment extends Fragment implements DokterUI,View.OnClickLis
         adapter.setPresenter(presenter);
         binding.btn.setOnClickListener(this);
         binding.idLVLanguages.setAdapter(adapter);
+
         return binding.getRoot();
     }
-
 
 
     @Override
